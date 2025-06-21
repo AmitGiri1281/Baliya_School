@@ -3,81 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management System</title>
+    <title>RD Public School Jadagara | KG to 8th Grade</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --kids-blue: #4dabf7;
+            --kids-orange: #fd7e14;
+            --kids-green: #40c057;
         }
         
         body {
-            background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
         }
         
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
+        .navbar {
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .feature-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-color);
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .navbar-brand i {
             color: var(--primary-color);
         }
         
-        .login-card {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: none;
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
         }
         
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: #2980b9;
-            border-color: #2980b9;
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
         
-        .nav-link {
-            color: var(--dark-color);
-            font-weight: 500;
+        .btn-kids {
+            background-color: var(--kids-orange);
+            border-color: var(--kids-orange);
+            color: white;
         }
         
-        .nav-link:hover {
-            color: var(--primary-color);
+        .btn-kids:hover {
+            background-color: #e8590c;
+            border-color: #e8590c;
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9)), url('./assets/images/kids-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .feature-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-top: 5px solid var(--kids-blue);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--kids-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .program-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-top: 5px solid var(--kids-orange);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-icon {
+            font-size: 2rem;
+            color: var(--kids-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-left: 5px solid var(--kids-blue);
+        }
+        
+        .kid-quote {
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .kid-quote:before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--kids-blue);
+            position: absolute;
+            left: -0.5rem;
+            top: -1rem;
+            opacity: 0.3;
         }
         
         footer {
             background-color: var(--dark-color);
             color: white;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 99;
+        }
+        
+        .kid-badge {
+            background-color: var(--kids-green);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
         @media (max-width: 768px) {
@@ -89,22 +190,42 @@
                 font-size: 2.5rem;
             }
         }
-    </style> 
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="./index.html"><i class="fas fa-school me-2 text-primary"></i>RD Public School Jadagara</a>
+            <a class="navbar-brand" href="./index.html">
+                <i class="fas fa-school me-2" style="color: var(--primary-color);"></i>
+                <span class="fw-bold">RD Public School Jadagara</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="./contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a href="./auth/login.html" class="btn btn-primary">Login</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Kindergarten</a></li>
+                            <li><a class="dropdown-item" href="#">Primary (1st-5th)</a></li>
+                            <li><a class="dropdown-item" href="#">Middle School (6th-8th)</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Curriculum</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="./auth/login.html" class="btn btn-primary px-4">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -115,26 +236,46 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Modern School Management System</h1>
-                    <p class="lead mb-4">Streamline your school administration with our comprehensive solution for student, teacher, and class management.</p>
+                    <h1 class="display-4 fw-bold mb-4">Nurturing Young Minds from KG to 8th Grade</h1>
+                    <p class="lead mb-4">Where every child discovers joy in learning and builds a strong foundation for the future</p>
                     <div class="d-flex gap-3">
-                        <a href="auth/login.html" class="btn btn-light btn-lg px-4">Get Started</a>
-                        <a href="#features" class="btn btn-outline-light btn-lg px-4">Learn More</a>
+                        <a href="#admissions" class="btn btn-light btn-lg px-4">Admissions</a>
+                        <a href="#programs" class="btn btn-outline-light btn-lg px-4">Our Programs</a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="assets/images/school-hero.png" alt="School Management" class="img-fluid">
+                <div class="col-lg-6 d-none d-lg-block text-center">
+                    <img src="assets/images/kids-learning.png" alt="Happy Students" class="img-fluid" style="max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="assets/images/school-hero.png" alt="School Building" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Welcome to RD Public School Jadagara</h2>
+                    <p class="lead">Since 2008, we've been providing quality education to young learners in a nurturing and stimulating environment.</p>
+                    <p>Our child-centric approach focuses on holistic development, combining academic excellence with creative expression and physical activity. We believe in fostering curiosity, creativity, and confidence in every student.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="./about.html" class="btn btn-primary px-4">Learn More</a>
+                        <a href="./gallery.html" class="btn btn-outline-primary px-4">View Gallery</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5 bg-light">
+    <section class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="fw-bold">Powerful Features</h2>
-                <p class="lead text-muted">Everything you need to manage your school efficiently</p>
+                <h2 class="fw-bold">Why Choose Our School?</h2>
+                <p class="lead text-muted">We provide the best learning environment for your child's growth</p>
             </div>
             
             <div class="row g-4">
@@ -142,10 +283,10 @@
                     <div class="card feature-card p-4">
                         <div class="text-center">
                             <div class="feature-icon">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-child"></i>
                             </div>
-                            <h4>Student Management</h4>
-                            <p class="text-muted">Easily manage student records, attendance, and performance all in one place.</p>
+                            <h4 class="fw-bold mb-3">Child-Centered Learning</h4>
+                            <p class="text-muted">Our curriculum is designed to engage young minds through play-based and experiential learning.</p>
                         </div>
                     </div>
                 </div>
@@ -154,10 +295,10 @@
                     <div class="card feature-card p-4">
                         <div class="text-center">
                             <div class="feature-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
+                                <i class="fas fa-heart"></i>
                             </div>
-                            <h4>Teacher Portal</h4>
-                            <p class="text-muted">Empower teachers with tools for attendance, grading, and communication.</p>
+                            <h4 class="fw-bold mb-3">Nurturing Environment</h4>
+                            <p class="text-muted">Safe and caring atmosphere where every child feels valued and supported.</p>
                         </div>
                     </div>
                 </div>
@@ -166,46 +307,10 @@
                     <div class="card feature-card p-4">
                         <div class="text-center">
                             <div class="feature-icon">
-                                <i class="fas fa-calendar-alt"></i>
+                                <i class="fas fa-book-open"></i>
                             </div>
-                            <h4>Attendance Tracking</h4>
-                            <p class="text-muted">Automated attendance system with real-time reporting and analytics.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card p-4">
-                        <div class="text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <h4>Grade Management</h4>
-                            <p class="text-muted">Comprehensive gradebook with customizable grading systems.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card p-4">
-                        <div class="text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-bell"></i>
-                            </div>
-                            <h4>Notifications</h4>
-                            <p class="text-muted">Instant alerts and notifications for important school events and updates.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card p-4">
-                        <div class="text-center">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <h4>Reports & Analytics</h4>
-                            <p class="text-muted">Detailed reports and insights to track school performance metrics.</p>
+                            <h4 class="fw-bold mb-3">Balanced Curriculum</h4>
+                            <p class="text-muted">Combines academic rigor with arts, sports, and life skills development.</p>
                         </div>
                     </div>
                 </div>
@@ -213,27 +318,129 @@
         </div>
     </section>
 
-    <!-- Login Section -->
-    <section class="py-5">
+    <!-- Programs Section -->
+    <section id="programs" class="py-5 bg-white">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="card login-card p-4">
-                        <div class="card-body">
-                            <h3 class="text-center mb-4">Ready to get started?</h3>
-                            <div class="text-center mb-4">
-                                <a href="auth/login.html" class="btn btn-primary btn-lg px-5">Login to Your Account</a>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Academic Programs</h2>
+                <p class="lead text-muted">Tailored education for different age groups</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card program-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="program-icon">
+                                <i class="fas fa-puzzle-piece"></i>
                             </div>
-                            <p class="text-center text-muted">Don't have an account? Contact your school administrator for access.</p>
+                            <h4 class="fw-bold mb-3">Kindergarten</h4>
+                            <span class="kid-badge mb-3">Ages 3-5</span>
+                            <p class="text-muted">Play-based learning that develops social, emotional, and early academic skills through fun activities.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card program-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="program-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Primary School</h4>
+                            <span class="kid-badge mb-3">Grades 1-5</span>
+                            <p class="text-muted">Building strong foundations in core subjects while encouraging creativity and curiosity.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card program-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="program-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Middle School</h4>
+                            <span class="kid-badge mb-3">Grades 6-8</span>
+                            <p class="text-muted">Preparing students for high school with advanced academics and leadership opportunities.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">What Parents & Students Say</h2>
+                <p class="lead text-muted">Hear from our school community</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="kid-quote mb-4">
+                            "I love going to school every day! My teacher makes learning so much fun with games and stories."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/images/student1.jpg" alt="Student" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h6 class="mb-0">Rahul, Grade 2</h6>
+                                <small class="text-muted">Student</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="kid-quote mb-4">
+                            "The teachers genuinely care about each child's progress. My daughter has blossomed here."
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/images/parent1.jpg" alt="Parent" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h6 class="mb-0">Mrs. Sharma</h6>
+                                <small class="text-muted">Parent</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="kid-quote mb-4">
+                            "The science lab and sports facilities helped me discover my passions. I feel ready for high school!"
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/images/student2.jpg" alt="Student" class="rounded-circle me-3" width="60">
+                            <div>
+                                <h6 class="mb-0">Priya, Grade 8</h6>
+                                <small class="text-muted">Student</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions CTA -->
+    <section id="admissions" class="py-5 bg-primary text-white">
+        <div class="container text-center py-4">
+            <h2 class="fw-bold mb-4">Admissions Open for 2023-24</h2>
+            <p class="lead mb-5">Limited seats available for Kindergarten through 8th Grade</p>
+            <a href="./contact.html" class="btn btn-light btn-lg px-5 me-3">Enquire Now</a>
+            <a href="#" class="btn btn-outline-light btn-lg px-5">Download Brochure</a>
         </div>
     </section>
 
     <!-- Footer -->
-     <footer>
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
@@ -297,13 +504,12 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+    <a href="#" class="btn btn-primary btn-lg back-to-top">
         <i class="bi bi-arrow-up"></i>
     </a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script>
         // Back to top button
         window.addEventListener('scroll', function() {
@@ -318,33 +524,6 @@
         document.querySelector('.back-to-top').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-        
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real application, you would send this data to a server
-            // For this example, we'll just show a success message
-            
-            const alertDiv = document.getElementById('form-alert');
-            alertDiv.innerHTML = `
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Thank you, ${name}!</strong> Your message has been sent successfully. We'll contact you soon at ${email}.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            `;
-            
-            // Reset form
-            e.target.reset();
-            
-            // Scroll to alert
-            alertDiv.scrollIntoView({ behavior: 'smooth' });
         });
         
         // Smooth scrolling for anchor links

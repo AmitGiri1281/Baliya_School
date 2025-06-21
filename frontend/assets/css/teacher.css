@@ -1,0 +1,145 @@
+/* Teacher-specific styles that extend or override the general styles */
+
+/* Dashboard Stats */
+.teacher-dashboard .stats-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Class List */
+.class-list .class-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.class-list .class-item:last-child {
+    border-bottom: none;
+}
+
+.class-list .class-time {
+    width: 120px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.class-list .class-details {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.class-list .class-details h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.class-list .class-details p {
+    margin: 5px 0 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.btn-sm {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+/* Task List */
+.task-list .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.task-list .task-item:last-child {
+    border-bottom: none;
+}
+
+.task-list .task-info {
+    flex: 1;
+}
+
+.task-list .task-info h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.task-list .task-info p {
+    margin: 5px 0 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.task-list .task-due {
+    display: block;
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Announcements */
+.recent-announcements {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.announcement-item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.announcement-item:last-child {
+    border-bottom: none;
+}
+
+.announcement-date {
+    width: 80px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.announcement-content {
+    flex: 1;
+}
+
+.announcement-content h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.announcement-content p {
+    margin: 5px 0 0;
+    color: #7f8c8d;
+}
+
+/* Profile Header */
+.teacher-profile .profile-header {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .class-list .class-item,
+    .task-list .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .class-list .class-time,
+    .class-list .class-details {
+        width: 100%;
+        padding: 5px 0;
+    }
+    
+    .class-list .btn {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}
